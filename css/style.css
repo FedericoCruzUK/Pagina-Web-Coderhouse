@@ -310,14 +310,22 @@ a {
 
 
 @media (max-width:768px){
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;}}
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;}
+  
+  .proyecto {
+    flex: 1 1 100%;
+    max-width: 100%;}}
 
 @media (max-width: 480px) {
-    body {
-        font-size: 14px;}
-    .container {
-        padding: 20px 10px;}}
+  body {
+    font-size: 14px;}
+
+  .container {
+    padding: 20px 10px;}
+  
+  .proyecto img{
+    border-radius: 5px;}}
