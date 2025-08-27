@@ -1,0 +1,344 @@
+
+
+/* ======= TODOS LOS HTML ======= */
+*{
+    margin: 0;
+    padding: 0;}
+
+ul { list-style: none; }
+
+a{
+    text-decoration: none;
+    color: red;
+    
+li > & {
+    color: black;
+    font-size: 18px;}}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;}
+
+main { flex: 1; }
+
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+
+  h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;}
+    
+  a {
+  color: #bbb;
+  text-decoration: none;}
+
+  &:hover {
+  color: #fff;}}
+
+  .footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;}
+
+  .footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 0.9rem;
+  color: #aaa;}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 20px;
+  flex-wrap: wrap;}
+
+nav {
+  background-color: #333;
+  padding: 10px 0;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+  li{
+    a{
+      position: relative;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+
+      &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: #0d6efd;
+    transition: width 0.3s ease;}
+
+  &:hover {
+    color: #0d6efd;
+
+    &::after {width: 100%;}
+  }}}}}
+
+section {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+
+article {
+  margin-bottom: 15px;}}
+
+aside {
+  flex: 1;
+  padding: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;}
+
+.proyectos-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; 
+  justify-content: center;
+
+.proyecto {
+  flex: 1 1 45%;
+  text-align: center;
+  max-width: 500px;
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}}}
+
+/* ======= SOBRE MI ======= */
+.biografia {
+  text-align: center;
+
+h1 {
+  font-size: 68px;
+  font-weight: bold;}
+
+h3 {font-size: 40px;}
+
+p {font-size: 30px;}}
+
+/* ======= PORTFOLIO ======= */
+%card {
+    min-width: 200px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+    border-radius: 10px;}
+
+.portfolio-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+.port-card {
+  @extend %card;
+
+.label {
+  font-size: 18px;
+  margin-bottom: 10px;}}}
+
+/* ======= TODAS LAS CARDS =======*/
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 660px;
+  margin: 0 auto;}
+
+/* ======= HABILIDADES ======= */
+.hab-card {
+  @extend %card;
+  flex: 1 1 30%;}
+
+.cont-card {
+  @extend %card;
+  flex: 1 1 30%;}
+
+.card {
+  @extend %card;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  
+  &:hover{
+  transform: scale(1.05);
+  background-color: #b8b8b8;}
+
+  a{
+    button{
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    
+    &:hover{
+        background-color: #0056b3;
+    }}}}
+
+.icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+
+&.gmail {color: #d44638;}
+
+&.linkedin {color: #0a66c2;}}
+
+.logo-img {
+  width: 50px;
+  height: auto;}
+
+  .logo-header {
+  width: 60px;
+  height: auto;}
+
+  /* ======= HABILIDADES ======= */
+  .skill {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 8px;
+
+  .skill-bar {
+  height: 100%;
+  color: white;
+  text-align: right;
+  padding-right: 5px;
+  font-size: 12px;
+  line-height: 20px;
+  width: 0;
+  transition: width 1.5s ease-in-out;}}
+
+  $skills: (
+  (html, #e44d26, 90%),
+  (css, #264de4, 85%),
+  (js, #f0db4f, 70%),
+  (git, #000000, 80%),
+  (bootstrap, #7952b3, 75%),
+  (cpp, #1e7fff, 95%)
+);
+
+@each $skill in $skills {
+    $name: nth($skill, 1);
+    $color: nth($skill, 2);
+    $width: nth($skill, 3);
+    .skill-bar.#{$name} {
+    background-color: $color;
+    animation: fill-#{$name} 2s forwards;}
+
+@keyframes fill-#{$name} {
+    to { width: $width; }
+  }}
+
+.contactos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
+  padding: 10px;
+
+img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;}
+
+&:hover {
+  transform: scale(1.1);
+  background-color: #0d6efd;}}}
+
+.proyecto, .hab-card, .cont-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width:768px){
+  nav {
+    ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;}}
+  
+  .proyectos-container{
+    flex-direction: column;
+    align-items: center;
+  
+  .proyecto {
+    flex: 1 1 100%;
+    max-width: 100%;
+  
+  img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;}}}}
+
+@media (max-width: 480px) {
+  body {font-size: 14px;}
+
+  .container {padding: 20px 10px;}
+  
+  .proyectos-container{
+  .proyecto{
+   img{
+    border-radius: 5px;}}}}
