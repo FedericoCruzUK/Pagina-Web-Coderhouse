@@ -132,10 +132,17 @@ aside {
   justify-content: center;}
 
 .proyecto {
-  padding: 15px;
+  flex: 1 1 45%;
+  text-align: center;
+  max-width: 500px;}
+
+.proyecto img {
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
-  flex: 1 1 300px;
-  text-align: center;}
+  display: block;
+  margin: 0 auto;
+}
 
 /* ======= SOBRE MI ======= */
 .biografia {
@@ -228,49 +235,49 @@ a {
   width: 50px;
   height: auto;}
 
-.logo-header {
+  .logo-header {
   width: 60px;
   height: auto;}
 
-/* ======= HABILIDADES ======= */
-.skill {
-    background-color: #f2f2f2;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 20px;
-    margin-top: 8px;}
+  /* ======= HABILIDADES ======= */
+  .skill {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 8px;}
 
-.skill-bar {
-    height: 100%;
-    color: rgb(255, 255, 255);
-    text-align: right;
-    padding-right: 5px;
-    font-size: 12px;
-    line-height: 20px;}
+  .skill-bar {
+  height: 100%;
+  color: rgb(255, 255, 255);
+  text-align: right;
+  padding-right: 5px;
+  font-size: 12px;
+  line-height: 20px;}
 
-.skill-bar.html {
-    background-color: #e44d26;
-    width: 90%;}
+  .skill-bar.html {
+  background-color: #e44d26;
+  width: 90%;}
 
-.skill-bar.css {
-    background-color: #264de4;
-    width: 85%;}
+  .skill-bar.css {
+  background-color: #264de4;
+  width: 85%;}
 
-.skill-bar.js {
-    background-color: #f0db4f;
-    width: 70%;}
+  .skill-bar.js {
+  background-color: #f0db4f;
+  width: 70%;}
 
-.skill-bar.git {
-    background-color: #000000;
-    width: 80%;}
+  .skill-bar.git {
+  background-color: #000000;
+  width: 80%;}
 
-.skill-bar.bootstrap {
-    background-color: #7952b3;
-    width: 75%;}
+  .skill-bar.bootstrap {
+  background-color: #7952b3;
+  width: 75%;}
 
-.skill-bar.cpp {
-    background-color: #1e7fff;
-    width: 95%;}
+  .skill-bar.cpp {
+  background-color: #1e7fff;
+  width: 95%;}
 
 .contactos {
   display: flex;
@@ -299,6 +306,8 @@ a {
 .contactos a:hover {
   transform: scale(1.1);
   background-color: #0d6efd;}
+
+
 
 @media (max-width:768px){
 nav ul {
