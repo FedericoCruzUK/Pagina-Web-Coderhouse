@@ -19,11 +19,3 @@ function actualizarReloj() {
 
 setInterval(actualizarReloj, 1000);
 actualizarReloj();
-
-// Enlaces footer
-document.getElementById('whatsapp').href = 'https://wa.me/5491131577629';
-document.getElementById('linkedin').href = 'https://www.linkedin.com/in/cruz-federico';
-document.getElementById('gmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=federicoezequielcruz@gmail.com';
-document.getElementById('whatsapp').setAttribute('target', '_blank');
-document.getElementById('linkedin').setAttribute('target', '_blank');
-document.getElementById('gmail').setAttribute('target', '_blank');
