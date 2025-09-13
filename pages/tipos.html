@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../assets/img/icono pokebola principal.webp">
+        <title>Portfolio</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+
+    <style>
+      /* Badges por tipo (paleta clásica) */
+      .type-badge{display:inline-block;padding:.25rem .6rem;border-radius:999px;font-weight:700;color:#fff;font-size:.9rem}
+      .t-normal{background:#a8a77a}.t-fire{background:#ee8130}.t-water{background:#6390f0}
+      .t-electric{background:#f7d02c;color:#111}.t-grass{background:#7ac74c}.t-ice{background:#96d9d6;color:#111}
+      .t-fighting{background:#c22e28}.t-poison{background:#a33ea1}.t-ground{background:#e2bf65;color:#111}
+      .t-flying{background:#a98ff3}.t-psychic{background:#f95587}.t-bug{background:#a6b91a;color:#111}
+      .t-rock{background:#b6a136;color:#111}.t-ghost{background:#735797}.t-dragon{background:#6f35fc}
+      .t-dark{background:#705746}.t-steel{background:#b7b7ce;color:#111}.t-fairy{background:#d685ad}
+
+      .card-type{border-radius:16px}
+      .pill{display:inline-block;background:#f1f3f5;border-radius:999px;padding:.2rem .6rem;margin:.15rem;font-size:.9rem}
+      .list-tight{margin:0;padding-left:1rem}
+      .list-tight li{margin:.15rem 0}
+      .legend .pill{background:#e9ecef}
+      .section-title{font-weight:800;letter-spacing:.3px}
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../assets/img/icono pokebola principal.webp" alt="pokebola" width="40">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./pokedex.html">Pokedex</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./tipos.html">Tipos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./habilidades.html">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      <div class="text-center">
+        <h1 class="section-title mb-2">Tipos & Efectividad</h1>
+        <p class="text-muted mb-3">Fortalezas y debilidades en ataque y defensa para cada tipo.</p>
+        <div class="legend d-flex justify-content-center gap-2 flex-wrap mb-4">
+          <span class="pill">Ataca bien a = muy eficaz</span>
+          <span class="pill">Ataca mal a = poco eficaz / inmune</span>
+          <span class="pill">Resiste = recibe poco daño</span>
+          <span class="pill">Débil a = recibe mucho daño</span>
+        </div>
+      </div>
+
+      <!-- Buscador simple -->
+      <div class="row g-3 align-items-center mb-3">
+        <div class="col-12 col-md-6 mx-auto">
+          <input id="filtroTipos" type="text" class="form-control" placeholder="Filtrar por tipo (ej: fuego, agua, hielo...)">
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div id="gridTipos" class="row g-3">
+
+        <!-- Normal -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="normal">
+            <div class="card card-type h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-2"><span class="tipo-normal">Normal</span></h3>
+                    <div>
+                        <strong>Fuerte contra:</strong><span class="pill">—</span>
+                    </div>
+                    <div class="mt-1"><strong>Debil contra:</strong>
+                        <ul class="list-tight">
+                            <li><span class="pill">Roca</span><span class="pill">Acero</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Inefectivo a:</strong><span class="pill">Fantasma</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Resistente a:</strong><span class="pill">—</span><br>
+                        <strong>Inmune a:</strong><span class="pill">Fantasma</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Débil a:</strong><span class="pill">Lucha</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fuego -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="fuego">
+            <div class="card card-type h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-2"><span class="tipo-fuego">Fuego</span></h3>
+                    <div>
+                        <strong>Fuerte contra:</strong><span class="pill">Planta</span><span class="pill">Hielo</span><span class="pill">Bicho</span><span class="pill">Acero</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Debil contra:</strong><span class="pill">Fuego</span> <span class="pill">Agua</span> <span class="pill">Roca</span> <span class="pill">Dragón</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Resistente a:</strong><span class="pill">Fuego</span><span class="pill">Planta</span> <span class="pill">Hielo</span><span class="pill">Bicho</span><span class="pill">Acero</span> <span class="pill">Hada</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Débil a:</strong><span class="pill">Agua</span><span class="pill">Tierra</span> <span class="pill">Roca</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agua -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="agua">
+            <div class="card card-type h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-2"><span class="tipo-agua">Agua</span></h3>
+                    <div>
+                        <strong>Fuerte contra:</strong><span class="pill">Fuego</span><span class="pill">Tierra</span><span class="pill">Roca</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Debil contra:</strong><span class="pill">Agua</span><span class="pill">Planta</span><span class="pill">Dragón</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Resistente a:</strong><span class="pill">Fuego</span><span class="pill">Agua</span> <span class="pill">Hielo</span><span class="pill">Acero</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Débil a:</strong><span class="pill">Eléctrico</span><span class="pill">Planta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eléctrico -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="electrico">
+            <div class="card card-type h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-2"><span class="tipo-electrico">Eléctrico</span></h3>
+                    <div>
+                        <strong>Fuerte contra:</strong> <span class="pill">Agua</span> <span class="pill">Volador</span>
+                    </div>
+                    <div class="mt-1"><strong>Debil contra:</strong>
+                        <ul class="list-tight">
+                            <li><span class="pill">Eléctrico</span> <span class="pill">Planta</span> <span class="pill">Dragón</span></li>
+                            <li><span class="pill">Inmune:</span> <span class="pill">Tierra</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Resistente a:</strong> <span class="pill">Eléctrico</span> <span class="pill">Volador</span> <span class="pill">Acero</span>
+                    </div>
+                    <div class="mt-1">
+                        <strong>Débil a:</strong> <span class="pill">Tierra</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planta -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="planta">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-planta">Planta</span></h3>
+              <div><strong>Fuerte contra:</strong> <span class="pill">Agua</span> <span class="pill">Tierra</span> <span class="pill">Roca</span></div>
+              <div class="mt-1"><strong>Debil contra:</strong> <span class="pill">Fuego</span> <span class="pill">Planta</span> <span class="pill">Veneno</span> <span class="pill">Volador</span> <span class="pill">Bicho</span> <span class="pill">Dragón</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resistente a:</strong> <span class="pill">Agua</span> <span class="pill">Eléctrico</span> <span class="pill">Planta</span> <span class="pill">Tierra</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Fuego</span> <span class="pill">Hielo</span> <span class="pill">Veneno</span> <span class="pill">Volador</span> <span class="pill">Bicho</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hielo -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="hielo">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-hielo">Hielo</span></h3>
+              <div><strong>Fuerte contra:</strong> <span class="pill">Planta</span> <span class="pill">Tierra</span> <span class="pill">Volador</span> <span class="pill">Dragón</span></div>
+              <div class="mt-1"><strong>Debil contra:</strong> <span class="pill">Fuego</span> <span class="pill">Agua</span> <span class="pill">Hielo</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resistente <a href=""></a>:</strong> <span class="pill">Hielo</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Fuego</span> <span class="pill">Lucha</span> <span class="pill">Roca</span> <span class="pill">Acero</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lucha -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="lucha">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-lucha">Lucha</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Normal</span> <span class="pill">Hielo</span> <span class="pill">Roca</span> <span class="pill">Siniestro</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Ataca mal / No hiere:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Veneno</span> <span class="pill">Volador</span> <span class="pill">Psíquico</span> <span class="pill">Bicho</span> <span class="pill">Hada</span></li>
+                  <li><span class="pill">Inmune:</span> <span class="pill">Fantasma</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Roca</span> <span class="pill">Bicho</span> <span class="pill">Siniestro</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Volador</span> <span class="pill">Psíquico</span> <span class="pill">Hada</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Veneno -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="veneno">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-veneno">Veneno</span></h3>
+              <div><strong>Fuerte contra:</strong> <span class="pill">Planta</span> <span class="pill">Hada</span></div>
+              <div class="mt-1"><strong>Debil contra:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Veneno</span> <span class="pill">Tierra</span> <span class="pill">Roca</span> <span class="pill">Fantasma</span></li>
+                  <li><span class="pill">Inmune:</span> <span class="pill">Acero</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resistente a:</strong> <span class="pill">Planta</span> <span class="pill">Lucha</span> <span class="pill">Veneno</span> <span class="pill">Bicho</span> <span class="pill">Hada</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Tierra</span> <span class="pill">Psíquico</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tierra -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="tierra">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-tierra">Tierra</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Fuego</span> <span class="pill">Eléctrico</span> <span class="pill">Veneno</span> <span class="pill">Roca</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Ataca mal / No hiere:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Planta</span> <span class="pill">Bicho</span></li>
+                  <li><span class="pill">Inmune:</span> <span class="pill">Volador</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Veneno</span> <span class="pill">Roca</span> · <span class="pill">Inmune a:</span> <span class="pill">Eléctrico</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Agua</span> <span class="pill">Planta</span> <span class="pill">Hielo</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volador -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="volador">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-volador">Volador</span></h3>
+              <div><strong>Fuerte contra:</strong> <span class="pill">Planta</span> <span class="pill">Lucha</span> <span class="pill">Bicho</span></div>
+              <div class="mt-1"><strong>Debil contra:</strong> <span class="pill">Eléctrico</span> <span class="pill">Roca</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resistente a:</strong> <span class="pill">Planta</span> <span class="pill">Lucha</span> <span class="pill">Bicho</span> · <span class="pill">Inmune a:</span> <span class="pill">Tierra</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Eléctrico</span> <span class="pill">Hielo</span> <span class="pill">Roca</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Psíquico -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="psiquico">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-psiquico">Psíquico</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Lucha</span> <span class="pill">Veneno</span></div>
+              <div class="mt-1"><strong>Ataca mal / No hiere:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Psíquico</span> <span class="pill">Acero</span></li>
+                  <li><span class="pill">Inmune:</span> <span class="pill">Siniestro</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Lucha</span> <span class="pill">Psíquico</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Bicho</span> <span class="pill">Fantasma</span> <span class="pill">Siniestro</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bicho -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="bicho">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-bicho">Bicho</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Planta</span> <span class="pill">Psíquico</span> <span class="pill">Siniestro</span></div>
+              <div class="mt-1"><strong>Ataca mal a:</strong> <span class="pill">Fuego</span> <span class="pill">Lucha</span> <span class="pill">Veneno</span> <span class="pill">Volador</span> <span class="pill">Fantasma</span> <span class="pill">Acero</span> <span class="pill">Hada</span></div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Planta</span> <span class="pill">Lucha</span> <span class="pill">Tierra</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Fuego</span> <span class="pill">Volador</span> <span class="pill">Roca</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roca -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="roca">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-roca">Roca</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Fuego</span> <span class="pill">Hielo</span> <span class="pill">Volador</span> <span class="pill">Bicho</span></div>
+              <div class="mt-1"><strong>Ataca mal a:</strong> <span class="pill">Lucha</span> <span class="pill">Tierra</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Normal</span> <span class="pill">Fuego</span> <span class="pill">Veneno</span> <span class="pill">Volador</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Agua</span> <span class="pill">Planta</span> <span class="pill">Lucha</span> <span class="pill">Tierra</span> <span class="pill">Acero</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fantasma -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="fantasma">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-fantasma">Fantasma</span></h3>
+              <div><strong>Fuerte contra:</strong> <span class="pill">Psíquico</span> <span class="pill">Fantasma</span></div>
+              <div class="mt-1"><strong>Debil contra:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Siniestro</span></li>
+                  <li><span class="pill">Inmune a:</span> <span class="pill">Normal</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resistente a:</strong> <span class="pill">Veneno</span> <span class="pill">Bicho</span> · <span class="pill">Inmune a:</span> <span class="pill">Normal</span> <span class="pill">Lucha</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Fantasma</span> <span class="pill">Siniestro</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dragón -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="dragon">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-dragon">Dragón</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Dragón</span></div>
+              <div class="mt-1"><strong>Ataca mal / No hiere:</strong>
+                <ul class="list-tight">
+                  <li><span class="pill">Acero</span></li>
+                  <li><span class="pill">Inmune:</span> <span class="pill">Hada</span></li>
+                </ul>
+              </div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Fuego</span> <span class="pill">Agua</span> <span class="pill">Planta</span> <span class="pill">Eléctrico</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Hielo</span> <span class="pill">Dragón</span> <span class="pill">Hada</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Siniestro -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="siniestro">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-siniestro">Siniestro</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Psíquico</span> <span class="pill">Fantasma</span></div>
+              <div class="mt-1"><strong>Ataca mal a:</strong> <span class="pill">Lucha</span> <span class="pill">Hada</span> <span class="pill">Siniestro</span></div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Siniestro</span> <span class="pill">Fantasma</span> · <span class="pill">Inmune a:</span> <span class="pill">Psíquico</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Lucha</span> <span class="pill">Bicho</span> <span class="pill">Hada</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acero -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="acero">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-acero">Acero</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Hielo</span> <span class="pill">Roca</span> <span class="pill">Hada</span></div>
+              <div class="mt-1"><strong>Ataca mal a:</strong> <span class="pill">Fuego</span> <span class="pill">Agua</span> <span class="pill">Eléctrico</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resiste (muchos):</strong> <span class="pill">Normal</span> <span class="pill">Planta</span> <span class="pill">Hielo</span> <span class="pill">Volador</span> <span class="pill">Psíquico</span> <span class="pill">Bicho</span> <span class="pill">Roca</span> <span class="pill">Dragón</span> <span class="pill">Acero</span> <span class="pill">Hada</span> · <span class="pill">Inmune a:</span> <span class="pill">Veneno</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Fuego</span> <span class="pill">Lucha</span> <span class="pill">Tierra</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hada -->
+        <div class="col-12 col-md-6 col-lg-4 type-item" data-tipo="hada">
+          <div class="card card-type h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="mb-2"><span class="tipo-hada">Hada</span></h3>
+              <div><strong>Ataca bien a:</strong> <span class="pill">Lucha</span> <span class="pill">Dragón</span> <span class="pill">Siniestro</span></div>
+              <div class="mt-1"><strong>Ataca mal a:</strong> <span class="pill">Fuego</span> <span class="pill">Veneno</span> <span class="pill">Acero</span></div>
+              <div class="mt-1"><strong>Resiste:</strong> <span class="pill">Lucha</span> <span class="pill">Bicho</span> <span class="pill">Siniestro</span> · <span class="pill">Inmune a:</span> <span class="pill">Dragón</span></div>
+              <div class="mt-1"><strong>Débil a:</strong> <span class="pill">Veneno</span> <span class="pill">Acero</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /GRID -->
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <p><a href="../index.html">Inicio</a></p>
+          <p><a href="./pokedex.html">Pokedex</a></p>
+          <p><a href="./portfolio.html">Portfolio</a></p>
+          <p><a href="./habilidades.html">Habilidades</a></p>
+          <p><a href="./contacto.html">Contacto</a></p>
+        </div>
+
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <p><a href="../index.html">Inicio</a></p>
+                    <p><a href="./pokedex.html">Pokedex</a></p>
+                    <p><a href="./tipos.html">Tipos</a></p>
+                    <p><a href="./habilidades.html">Habilidades</a></p>
+                    <p><a href="./contacto.html">Contacto</a></p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p>📍 Anchorena 238</p>
+                    <p>📞 +54 9 11 3157-7629</p>
+                    <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=federicoezequielcruz@gmail.com" target="_blank">📧 federicoezequielcruz@gmail.com</a></p>
+                </div>
+                <div class="footer-social">
+                    <h4>Seguinos</h4>
+                    <p><a href="https://facebook.com" target="_blank">🌐 Facebook</a></p>
+                    <p><a href="https://instagram.com" target="_blank">📷 Instagram</a></p>
+                    <p><a href="https://linkedin.com" target="_blank">💼 LinkedIn</a></p>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 Federico Cruz. Coderhouse.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="../js/section.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const input = document.getElementById('filtroTipos');
+            const items = document.querySelectorAll('.type-item');
+            input?.addEventListener('input', (e) => {
+            const q = e.target.value.trim().toLowerCase();
+            items.forEach(card => {
+            const tipo = card.dataset.tipo || '';
+            card.style.display = (tipo.includes(q) || q === '') ? '' : 'none';});});
+        </script>
+    </body>
+</html>
