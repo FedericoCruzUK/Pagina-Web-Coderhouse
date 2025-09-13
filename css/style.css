@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ======= TODOS LOS HTML ======= */
 * {
   margin: 0;
@@ -10,25 +11,50 @@ ul {
 
 a {
   text-decoration: none;
-  color: red;
 }
-li > a {
-  color: black;
-  font-size: 18px;
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: #111;
 }
 
 main {
   flex: 1;
 }
 
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0.75rem 0;
+}
+
+p {
+  font-size: 1.05rem;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 .footer {
+  margin-top: auto;
   background-color: #111;
   color: #fff;
   padding: 40px 20px;
@@ -63,15 +89,6 @@ main {
   border-top: 1px solid #444;
   font-size: 0.9rem;
   color: #aaa;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  padding: 60px 20px;
-  flex-wrap: wrap;
 }
 
 nav {
@@ -142,7 +159,7 @@ aside {
   text-align: center;
   max-width: 500px;
 }
-.proyectos-container .proyecto img {
+.proyectos-container .proyecto .img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
@@ -150,19 +167,3089 @@ aside {
   margin: 0 auto;
 }
 
-/* ======= SOBRE MI ======= */
-.biografia {
+/* === HERO CAROUSEL === */
+#heroCarousel .carousel-item {
+  /* deja aire para que la imagen no toque las líneas de las flechas */
+  padding-inline: 56px;
+}
+
+#heroCarousel .hero-slide {
+  min-height: 420px; /* alto objetivo del banner */
+  display: flex;
+  align-items: center;
+}
+
+#heroCarousel .hero-wrap {
+  max-width: 1200px; /* ancho máximo del contenido */
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* texto a un lado, imagen al otro */
+  gap: 40px;
+}
+
+#heroCarousel .hero-text {
+  flex: 1 1 50%;
+}
+
+#heroCarousel .hero-text h2 {
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+}
+
+#heroCarousel .hero-text p {
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Imagen: siempre completa, sin recortes */
+#heroCarousel .hero-img {
+  flex: 1 1 50%;
+  max-height: 380px; /* ajustá 320–420 según gusto */
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; /* nunca recorta */
+  display: block;
+  margin-left: auto; /* empuja a la derecha si el texto va a la izquierda */
+}
+
+/* ==== Flechas con línea vertical negra ==== */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  width: 48px; /* área clickeable lateral */
+  opacity: 1;
+  background: transparent;
+  border: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#heroCarousel .carousel-control-prev {
+  background-image: linear-gradient(#000, #000);
+  background-repeat: no-repeat;
+  background-size: 1px 100%;
+  background-position: right center; /* línea pegada al borde derecho del prev */
+}
+
+#heroCarousel .carousel-control-next {
+  background-image: linear-gradient(#000, #000);
+  background-repeat: no-repeat;
+  background-size: 1px 100%;
+  background-position: left center; /* línea pegada al borde izquierdo del next */
+}
+
+#heroCarousel .carousel-control-prev-icon,
+#heroCarousel .carousel-control-next-icon {
+  filter: invert(1) brightness(0); /* negro */
+  width: 2rem;
+  height: 2rem;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 992px) {
+  #heroCarousel .hero-slide {
+    min-height: 380px;
+  }
+  #heroCarousel .hero-img {
+    max-height: 320px;
+  }
+}
+@media (max-width: 768px) {
+  #heroCarousel .carousel-item {
+    padding-inline: 40px;
+  }
+  #heroCarousel .hero-wrap {
+    flex-direction: column;
+    text-align: center;
+  }
+  #heroCarousel .hero-img {
+    max-height: 260px;
+    margin: 0 auto;
+  }
+}
+/* ======= POKÉDEX ======= */
+.pokedex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.pokemon-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
   text-align: center;
 }
-.biografia h1 {
-  font-size: 68px;
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+
+.product-list {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.product-list li {
+  margin-bottom: 5px;
+}
+
+/* Función para color de texto según luminosidad */
+/* Clases de un solo tipo */
+.tipo-agua {
+  background-color: #1E90FF;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
   font-weight: bold;
+  border: 2px solid rgb(0, 105.64, 208.5);
 }
-.biografia h3 {
-  font-size: 40px;
+
+.tipo-electrico {
+  background-color: #FFD700;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 150.5, 0);
 }
-.biografia p {
-  font-size: 30px;
+
+.tipo-fantasma {
+  background-color: #23005c;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(5.8967391304, 0, 15.5);
+}
+
+.tipo-fuego {
+  background-color: #FF4500;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 48.3, 0);
+}
+
+.tipo-hielo {
+  background-color: #4cd0fc;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(4.1456043956, 186.5521978022, 247.3543956044);
+}
+
+.tipo-planta {
+  background-color: #32CD32;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(35, 143.5, 35);
+}
+
+.tipo-veneno {
+  background-color: #a200ff;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(113.4, 0, 178.5);
+}
+
+.tipo-volador {
+  background-color: #8ca1a8;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(99.7054455446, 123.7722772277, 131.7945544554);
+}
+
+.tipo-roca {
+  background-color: #A9A9A9;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(130.75, 130.75, 130.75);
+}
+
+.tipo-normal {
+  background-color: #b3b3b3;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(140.75, 140.75, 140.75);
+}
+
+.tipo-hada {
+  background-color: #ff00dd;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 0, 154.7);
+}
+
+.tipo-acero {
+  background-color: #4e4e4e;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(39.75, 39.75, 39.75);
+}
+
+.tipo-dragon {
+  background-color: #003cff;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(0, 42, 178.5);
+}
+
+.tipo-lucha {
+  background-color: #ff0022;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 0, 23.8);
+}
+
+.tipo-tierra {
+  background-color: #ff6600;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 71.4, 0);
+}
+
+.tipo-psiquico {
+  background-color: rgba(255, 77, 196, 0.7411764706);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(255, 0.5, 170.643258427, 0.7411764706);
+}
+
+.tipo-bicho {
+  background-color: #88ff00;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(95.2, 178.5, 0);
+}
+
+.tipo-siniestro {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+/* Clases de doble tipo (gradiente automático) */
+.tipo-agua.tipo-electrico {
+  background: linear-gradient(45deg, #1E90FF 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.7598522167, 144.7721674877, 85.7278325123);
+}
+
+.tipo-agua.tipo-fantasma {
+  background: linear-gradient(45deg, #1E90FF 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.4308252427, 45.2621359223, 109.0691747573);
+}
+
+.tipo-agua.tipo-fuego {
+  background: linear-gradient(45deg, #1E90FF 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(98.7198795181, 73.7801204819, 88.328313253);
+}
+
+.tipo-agua.tipo-hielo {
+  background: linear-gradient(45deg, #1E90FF 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(1.6953316953, 140.7125307125, 228.3046683047);
+}
+
+.tipo-agua.tipo-planta {
+  background: linear-gradient(45deg, #1E90FF 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(25.7342657343, 112.2657342657, 98.1118881119);
+}
+
+.tipo-agua.tipo-veneno {
+  background: linear-gradient(45deg, #1E90FF 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(32.8524590164, 0, 250.5);
+}
+
+.tipo-agua.tipo-volador {
+  background: linear-gradient(45deg, #1E90FF 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.8243559719, 114.3793911007, 175.1756440281);
+}
+
+.tipo-agua.tipo-roca {
+  background: linear-gradient(45deg, #1E90FF 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.9068010076, 118.3879093199, 184.0931989924);
+}
+
+.tipo-agua.tipo-normal {
+  background: linear-gradient(45deg, #1E90FF 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(49.3899204244, 123.474801061, 195.6100795756);
+}
+
+.tipo-agua.tipo-hada {
+  background: linear-gradient(45deg, #1E90FF 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.15625, 19.8475, 213.6525);
+}
+
+.tipo-agua.tipo-acero {
+  background: linear-gradient(45deg, #1E90FF 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(35.2653061224, 72.4897959184, 108.7346938776);
+}
+
+.tipo-agua.tipo-dragon {
+  background: linear-gradient(45deg, #1E90FF 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(0, 70.14375, 193.5);
+}
+
+.tipo-agua.tipo-lucha {
+  background: linear-gradient(45deg, #1E90FF 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(92.1478060046, 46.558891455, 93.441108545);
+}
+
+.tipo-agua.tipo-tierra {
+  background: linear-gradient(45deg, #1E90FF 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.036809816, 86.963190184, 90.4417177914);
+}
+
+.tipo-agua.tipo-psiquico {
+  background: linear-gradient(45deg, #1E90FF 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(47.1137324749, 55.6105169918, 222.903914584, 0.8705882353);
+}
+
+.tipo-agua.tipo-bicho {
+  background: linear-gradient(45deg, #1E90FF 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.2549450549, 155.7450549451, 90.5494505495);
+}
+
+.tipo-agua.tipo-siniestro {
+  background: linear-gradient(45deg, #1E90FF 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(6.9473684211, 33.3473684211, 59.0526315789);
+}
+
+.tipo-electrico.tipo-agua {
+  background: linear-gradient(45deg, #FFD700 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.7598522167, 144.7721674877, 85.7278325123);
+}
+
+.tipo-electrico.tipo-fantasma {
+  background: linear-gradient(45deg, #FFD700 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.9240837696, 64.4437172775, 27.5759162304);
+}
+
+.tipo-electrico.tipo-fuego {
+  background: linear-gradient(45deg, #FFD700 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 99.4, 0);
+}
+
+.tipo-electrico.tipo-hielo {
+  background: linear-gradient(45deg, #FFD700 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.8086956522, 192.2086956522, 68.7913043478);
+}
+
+.tipo-electrico.tipo-planta {
+  background: linear-gradient(45deg, #FFD700 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.8563829787, 141.6382978723, 16.8617021277);
+}
+
+.tipo-electrico.tipo-veneno {
+  background: linear-gradient(45deg, #FFD700 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(182.0940721649, 57.4059278351, 82.0966494845);
+}
+
+.tipo-electrico.tipo-volador {
+  background: linear-gradient(45deg, #FFD700 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 144.8905908096, 51.5864332604);
+}
+
+.tipo-electrico.tipo-roca {
+  background: linear-gradient(45deg, #FFD700 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 155.0819672131, 44.3091334895);
+}
+
+.tipo-electrico.tipo-normal {
+  background: linear-gradient(45deg, #FFD700 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 164.4471744472, 42.9484029484);
+}
+
+.tipo-electrico.tipo-hada {
+  background: linear-gradient(45deg, #FFD700 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(255, 31, 35.5559322034);
+}
+
+.tipo-electrico.tipo-acero {
+  background: linear-gradient(45deg, #FFD700 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 91.9635036496, 24.4817518248);
+}
+
+.tipo-electrico.tipo-dragon {
+  background: linear-gradient(45deg, #FFD700 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.4030612245, 98.0969387755, 90.4030612245);
+}
+
+.tipo-electrico.tipo-lucha {
+  background: linear-gradient(45deg, #FFD700 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 74.3392857143, 0);
+}
+
+.tipo-electrico.tipo-tierra {
+  background: linear-gradient(45deg, #FFD700 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 110.95, 0);
+}
+
+.tipo-electrico.tipo-psiquico {
+  background: linear-gradient(45deg, #FFD700 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(251.1352941176, 125.6243513701, 0, 0.8705882353);
+}
+
+.tipo-electrico.tipo-bicho {
+  background: linear-gradient(45deg, #FFD700 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(131.8585106383, 158.5, 0);
+}
+
+.tipo-electrico.tipo-siniestro {
+  background: linear-gradient(45deg, #FFD700 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #332b00;
+}
+
+.tipo-fantasma.tipo-agua {
+  background: linear-gradient(45deg, #23005c 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.4308252427, 45.2621359223, 109.0691747573);
+}
+
+.tipo-fantasma.tipo-electrico {
+  background: linear-gradient(45deg, #23005c 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.9240837696, 64.4437172775, 27.5759162304);
+}
+
+.tipo-fantasma.tipo-fuego {
+  background: linear-gradient(45deg, #23005c 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(83.2033426184, 19.7966573816, 26.3955431755);
+}
+
+.tipo-fantasma.tipo-hielo {
+  background: linear-gradient(45deg, #23005c 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(36.8373626374, 69.0285714286, 114.1626373626);
+}
+
+.tipo-fantasma.tipo-planta {
+  background: linear-gradient(45deg, #23005c 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.0775862069, 48.4224137931, 33.5413793103);
+}
+
+.tipo-fantasma.tipo-veneno {
+  background: linear-gradient(45deg, #23005c 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(55.0691642651, 0, 97);
+}
+
+.tipo-fantasma.tipo-volador {
+  background: linear-gradient(45deg, #23005c 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(55.7007125891, 51.2446555819, 82.7553444181);
+}
+
+.tipo-fantasma.tipo-roca {
+  background: linear-gradient(45deg, #23005c 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.7069767442, 54.4337209302, 84.0662790698);
+}
+
+.tipo-fantasma.tipo-normal {
+  background: linear-gradient(45deg, #23005c 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(70.62, 59.07, 89.43);
+}
+
+.tipo-fantasma.tipo-hada {
+  background: linear-gradient(45deg, #23005c 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(74.1214057508, 0, 80);
+}
+
+.tipo-fantasma.tipo-acero {
+  background: linear-gradient(45deg, #23005c 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(21.6431451613, 14.939516129, 32.560483871);
+}
+
+.tipo-fantasma.tipo-dragon {
+  background: linear-gradient(45deg, #23005c 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(10.4908376963, 17.9842931937, 104.0091623037);
+}
+
+.tipo-fantasma.tipo-lucha {
+  background: linear-gradient(45deg, #23005c 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(68.5, 0, 29.7620689655);
+}
+
+.tipo-fantasma.tipo-tierra {
+  background: linear-gradient(45deg, #23005c 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.9240837696, 30.5732984293, 27.5759162304);
+}
+
+.tipo-fantasma.tipo-psiquico {
+  background: linear-gradient(45deg, #23005c 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(60.4903258645, 14.8126487011, 67.7638218871, 0.8705882353);
+}
+
+.tipo-fantasma.tipo-bicho {
+  background: linear-gradient(45deg, #23005c 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(47.8011527378, 71.2824207493, 25.7175792507);
+}
+
+.tipo-fantasma.tipo-siniestro {
+  background: linear-gradient(45deg, #23005c 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.tipo-fuego.tipo-agua {
+  background: linear-gradient(45deg, #FF4500 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(98.7198795181, 73.7801204819, 88.328313253);
+}
+
+.tipo-fuego.tipo-electrico {
+  background: linear-gradient(45deg, #FF4500 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 99.4, 0);
+}
+
+.tipo-fuego.tipo-fantasma {
+  background: linear-gradient(45deg, #FF4500 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(83.2033426184, 19.7966573816, 26.3955431755);
+}
+
+.tipo-fuego.tipo-hielo {
+  background: linear-gradient(45deg, #FF4500 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(126.9336384439, 100.3661327231, 88.0663615561);
+}
+
+.tipo-fuego.tipo-planta {
+  background: linear-gradient(45deg, #FF4500 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.7746478873, 77.9549295775, 14.2253521127);
+}
+
+.tipo-fuego.tipo-veneno {
+  background: linear-gradient(45deg, #FF4500 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(142.8611111111, 23.6388888889, 87.3611111111);
+}
+
+.tipo-fuego.tipo-volador {
+  background: linear-gradient(45deg, #FF4500 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 79.398249453, 51.5864332604);
+}
+
+.tipo-fuego.tipo-roca {
+  background: linear-gradient(45deg, #FF4500 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 79.8594847775, 44.3091334895);
+}
+
+.tipo-fuego.tipo-normal {
+  background: linear-gradient(45deg, #FF4500 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 81.941031941, 42.9484029484);
+}
+
+.tipo-fuego.tipo-hada {
+  background: linear-gradient(45deg, #FF4500 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(213, 0, 73.4149659864);
+}
+
+.tipo-fuego.tipo-acero {
+  background: linear-gradient(45deg, #FF4500 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 46.1386861314, 24.4817518248);
+}
+
+.tipo-fuego.tipo-dragon {
+  background: linear-gradient(45deg, #FF4500 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(76.69921875, 38.80078125, 76.69921875);
+}
+
+.tipo-fuego.tipo-lucha {
+  background: linear-gradient(45deg, #FF4500 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 14.375, 0);
+}
+
+.tipo-fuego.tipo-tierra {
+  background: linear-gradient(45deg, #FF4500 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 59.85, 0);
+}
+
+.tipo-fuego.tipo-psiquico {
+  background: linear-gradient(45deg, #FF4500 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(250.4647058824, 0, 0.9176300447, 0.8705882353);
+}
+
+.tipo-fuego.tipo-bicho {
+  background: linear-gradient(45deg, #FF4500 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119, 98.6086956522, 0);
+}
+
+.tipo-fuego.tipo-siniestro {
+  background: linear-gradient(45deg, #FF4500 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 13.8, 0);
+}
+
+.tipo-hielo.tipo-agua {
+  background: linear-gradient(45deg, #4cd0fc 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(1.6953316953, 140.7125307125, 228.3046683047);
+}
+
+.tipo-hielo.tipo-electrico {
+  background: linear-gradient(45deg, #4cd0fc 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.8086956522, 192.2086956522, 68.7913043478);
+}
+
+.tipo-hielo.tipo-fantasma {
+  background: linear-gradient(45deg, #4cd0fc 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(36.8373626374, 69.0285714286, 114.1626373626);
+}
+
+.tipo-hielo.tipo-fuego {
+  background: linear-gradient(45deg, #4cd0fc 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(126.9336384439, 100.3661327231, 88.0663615561);
+}
+
+.tipo-hielo.tipo-planta {
+  background: linear-gradient(45deg, #4cd0fc 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(38.920997921, 154.079002079, 109.5405405405);
+}
+
+.tipo-hielo.tipo-veneno {
+  background: linear-gradient(45deg, #4cd0fc 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.7770491803, 28.2524590164, 252.7475409836);
+}
+
+.tipo-hielo.tipo-volador {
+  background: linear-gradient(45deg, #4cd0fc 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(56.6015625, 152.82421875, 184.8984375);
+}
+
+.tipo-hielo.tipo-roca {
+  background: linear-gradient(45deg, #4cd0fc 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.2330508475, 159.7584745763, 191.2669491525);
+}
+
+.tipo-hielo.tipo-normal {
+  background: linear-gradient(45deg, #4cd0fc 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(69.0943113772, 165.3278443114, 197.4056886228);
+}
+
+.tipo-hielo.tipo-hada {
+  background: linear-gradient(45deg, #4cd0fc 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.1061946903, 35.8495575221, 228.1504424779);
+}
+
+.tipo-hielo.tipo-acero {
+  background: linear-gradient(45deg, #4cd0fc 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(52.6590909091, 97.7954545455, 112.8409090909);
+}
+
+.tipo-hielo.tipo-dragon {
+  background: linear-gradient(45deg, #4cd0fc 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(1.47597254, 95.938215103, 213.52402746);
+}
+
+.tipo-hielo.tipo-lucha {
+  background: linear-gradient(45deg, #4cd0fc 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(121.1767151767, 71.8232848233, 103.1205821206);
+}
+
+.tipo-hielo.tipo-tierra {
+  background: linear-gradient(45deg, #4cd0fc 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(126.9336384439, 116.6018306636, 88.0663615561);
+}
+
+.tipo-hielo.tipo-psiquico {
+  background: linear-gradient(45deg, #4cd0fc 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(79.1554183038, 105.8722633273, 217.9269346374, 0.8705882353);
+}
+
+.tipo-hielo.tipo-bicho {
+  background: linear-gradient(45deg, #4cd0fc 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(39.9217391304, 221.0782608696, 68.7913043478);
+}
+
+.tipo-hielo.tipo-siniestro {
+  background: linear-gradient(45deg, #4cd0fc 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.2743902439, 55.487804878, 67.2256097561);
+}
+
+.tipo-planta.tipo-agua {
+  background: linear-gradient(45deg, #32CD32 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(25.7342657343, 112.2657342657, 98.1118881119);
+}
+
+.tipo-planta.tipo-electrico {
+  background: linear-gradient(45deg, #32CD32 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.8563829787, 141.6382978723, 16.8617021277);
+}
+
+.tipo-planta.tipo-fantasma {
+  background: linear-gradient(45deg, #32CD32 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.0775862069, 48.4224137931, 33.5413793103);
+}
+
+.tipo-planta.tipo-fuego {
+  background: linear-gradient(45deg, #32CD32 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.7746478873, 77.9549295775, 14.2253521127);
+}
+
+.tipo-planta.tipo-hielo {
+  background: linear-gradient(45deg, #32CD32 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(38.920997921, 154.079002079, 109.5405405405);
+}
+
+.tipo-planta.tipo-veneno {
+  background: linear-gradient(45deg, #32CD32 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(74.2, 71.75, 106.75);
+}
+
+.tipo-planta.tipo-volador {
+  background: linear-gradient(45deg, #32CD32 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(62.5344827586, 138.9655172414, 74.6939655172);
+}
+
+.tipo-planta.tipo-roca {
+  background: linear-gradient(45deg, #32CD32 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(70.0702576112, 149.9297423888, 70.0702576112);
+}
+
+.tipo-planta.tipo-normal {
+  background: linear-gradient(45deg, #32CD32 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(71.2039312039, 158.7960687961, 71.2039312039);
+}
+
+.tipo-planta.tipo-hada {
+  background: linear-gradient(45deg, #32CD32 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(106.75, 71.75, 94.85);
+}
+
+.tipo-planta.tipo-acero {
+  background: linear-gradient(45deg, #32CD32 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(40.1751824818, 88.8248175182, 40.1751824818);
+}
+
+.tipo-planta.tipo-dragon {
+  background: linear-gradient(45deg, #32CD32 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(14.2253521127, 75.3943661972, 86.7746478873);
+}
+
+.tipo-planta.tipo-lucha {
+  background: linear-gradient(45deg, #32CD32 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(92.5192802057, 62.1850899743, 25.4807197943);
+}
+
+.tipo-planta.tipo-tierra {
+  background: linear-gradient(45deg, #32CD32 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(87.1428571429, 87.7142857143, 14.2857142857);
+}
+
+.tipo-planta.tipo-psiquico {
+  background: linear-gradient(45deg, #32CD32 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(88.957852473, 112.5164849681, 72.6541032672, 0.8705882353);
+}
+
+.tipo-planta.tipo-bicho {
+  background: linear-gradient(45deg, #32CD32 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.1, 161, 17.5);
+}
+
+.tipo-planta.tipo-siniestro {
+  background: linear-gradient(45deg, #32CD32 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #0a290a;
+}
+
+.tipo-veneno.tipo-agua {
+  background: linear-gradient(45deg, #a200ff 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(32.8524590164, 0, 250.5);
+}
+
+.tipo-veneno.tipo-electrico {
+  background: linear-gradient(45deg, #a200ff 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(182.0940721649, 57.4059278351, 82.0966494845);
+}
+
+.tipo-veneno.tipo-fantasma {
+  background: linear-gradient(45deg, #a200ff 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(55.0691642651, 0, 97);
+}
+
+.tipo-veneno.tipo-fuego {
+  background: linear-gradient(45deg, #a200ff 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(142.8611111111, 23.6388888889, 87.3611111111);
+}
+
+.tipo-veneno.tipo-hielo {
+  background: linear-gradient(45deg, #a200ff 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.7770491803, 28.2524590164, 252.7475409836);
+}
+
+.tipo-veneno.tipo-planta {
+  background: linear-gradient(45deg, #a200ff 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(74.2, 71.75, 106.75);
+}
+
+.tipo-veneno.tipo-volador {
+  background: linear-gradient(45deg, #a200ff 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(112.6926605505, 43.001146789, 172.498853211);
+}
+
+.tipo-veneno.tipo-roca {
+  background: linear-gradient(45deg, #a200ff 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(127.775175644, 44.3091334895, 175.6908665105);
+}
+
+.tipo-veneno.tipo-normal {
+  background: linear-gradient(45deg, #a200ff 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(134.4963144963, 42.9484029484, 187.0515970516);
+}
+
+.tipo-veneno.tipo-hada {
+  background: linear-gradient(45deg, #a200ff 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(141.4821428571, 0, 161.5);
+}
+
+.tipo-veneno.tipo-acero {
+  background: linear-gradient(45deg, #a200ff 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(75.3284671533, 24.4817518248, 104.5182481752);
+}
+
+.tipo-veneno.tipo-dragon {
+  background: linear-gradient(45deg, #a200ff 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(47.26, 0, 208.5);
+}
+
+.tipo-veneno.tipo-lucha {
+  background: linear-gradient(45deg, #a200ff 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(132, 0, 91.4820143885);
+}
+
+.tipo-veneno.tipo-tierra {
+  background: linear-gradient(45deg, #a200ff 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(149.0299401198, 33.9700598802, 89.8562874251);
+}
+
+.tipo-veneno.tipo-psiquico {
+  background: linear-gradient(45deg, #a200ff 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(141.5228593285, 16.3037492058, 168.8668390295, 0.8705882353);
+}
+
+.tipo-veneno.tipo-bicho {
+  background: linear-gradient(45deg, #a200ff 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(109.2077087794, 90.7922912206, 90.7922912206);
+}
+
+.tipo-veneno.tipo-siniestro {
+  background: linear-gradient(45deg, #a200ff 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(32.4, 0, 51);
+}
+
+.tipo-volador.tipo-agua {
+  background: linear-gradient(45deg, #8ca1a8 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.8243559719, 114.3793911007, 175.1756440281);
+}
+
+.tipo-volador.tipo-electrico {
+  background: linear-gradient(45deg, #8ca1a8 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 144.8905908096, 51.5864332604);
+}
+
+.tipo-volador.tipo-fantasma {
+  background: linear-gradient(45deg, #8ca1a8 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(55.7007125891, 51.2446555819, 82.7553444181);
+}
+
+.tipo-volador.tipo-fuego {
+  background: linear-gradient(45deg, #8ca1a8 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 79.398249453, 51.5864332604);
+}
+
+.tipo-volador.tipo-hielo {
+  background: linear-gradient(45deg, #8ca1a8 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(56.6015625, 152.82421875, 184.8984375);
+}
+
+.tipo-volador.tipo-planta {
+  background: linear-gradient(45deg, #8ca1a8 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(62.5344827586, 138.9655172414, 74.6939655172);
+}
+
+.tipo-volador.tipo-veneno {
+  background: linear-gradient(45deg, #8ca1a8 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(112.6926605505, 43.001146789, 172.498853211);
+}
+
+.tipo-volador.tipo-roca {
+  background: linear-gradient(45deg, #8ca1a8 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(114.0227272727, 127.8636363636, 132.4772727273);
+}
+
+.tipo-volador.tipo-normal {
+  background: linear-gradient(45deg, #8ca1a8 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(118.2245762712, 133.2627118644, 138.2754237288);
+}
+
+.tipo-volador.tipo-hada {
+  background: linear-gradient(45deg, #8ca1a8 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(151.5592672414, 49.9407327586, 148.9536637931);
+}
+
+.tipo-volador.tipo-acero {
+  background: linear-gradient(45deg, #8ca1a8 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(73.0581896552, 80.0959051724, 82.4418103448);
+}
+
+.tipo-volador.tipo-dragon {
+  background: linear-gradient(45deg, #8ca1a8 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(39.0262582057, 75.3610503282, 165.9737417943);
+}
+
+.tipo-volador.tipo-lucha {
+  background: linear-gradient(45deg, #8ca1a8 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(151.5592672414, 49.9407327586, 67.7456896552);
+}
+
+.tipo-volador.tipo-tierra {
+  background: linear-gradient(45deg, #8ca1a8 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 94.2013129103, 51.5864332604);
+}
+
+.tipo-volador.tipo-psiquico {
+  background: linear-gradient(45deg, #8ca1a8 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(149.5053679952, 86.4828672989, 144.4379850353, 0.8705882353);
+}
+
+.tipo-volador.tipo-bicho {
+  background: linear-gradient(45deg, #8ca1a8 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(99.8417431193, 169.0389908257, 46.4610091743);
+}
+
+.tipo-volador.tipo-siniestro {
+  background: linear-gradient(45deg, #8ca1a8 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(35.2272727273, 40.5113636364, 42.2727272727);
+}
+
+.tipo-roca.tipo-agua {
+  background: linear-gradient(45deg, #A9A9A9 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.9068010076, 118.3879093199, 184.0931989924);
+}
+
+.tipo-roca.tipo-electrico {
+  background: linear-gradient(45deg, #A9A9A9 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 155.0819672131, 44.3091334895);
+}
+
+.tipo-roca.tipo-fantasma {
+  background: linear-gradient(45deg, #A9A9A9 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.7069767442, 54.4337209302, 84.0662790698);
+}
+
+.tipo-roca.tipo-fuego {
+  background: linear-gradient(45deg, #A9A9A9 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 79.8594847775, 44.3091334895);
+}
+
+.tipo-roca.tipo-hielo {
+  background: linear-gradient(45deg, #A9A9A9 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.2330508475, 159.7584745763, 191.2669491525);
+}
+
+.tipo-roca.tipo-planta {
+  background: linear-gradient(45deg, #A9A9A9 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(70.0702576112, 149.9297423888, 70.0702576112);
+}
+
+.tipo-roca.tipo-veneno {
+  background: linear-gradient(45deg, #A9A9A9 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(127.775175644, 44.3091334895, 175.6908665105);
+}
+
+.tipo-roca.tipo-volador {
+  background: linear-gradient(45deg, #A9A9A9 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(114.0227272727, 127.8636363636, 132.4772727273);
+}
+
+.tipo-roca.tipo-normal {
+  background: linear-gradient(45deg, #A9A9A9 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(135.75, 135.75, 135.75);
+}
+
+.tipo-roca.tipo-hada {
+  background: linear-gradient(45deg, #A9A9A9 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 44.3091334895, 158.1733021077);
+}
+
+.tipo-roca.tipo-acero {
+  background: linear-gradient(45deg, #A9A9A9 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(85.25, 85.25, 85.25);
+}
+
+.tipo-roca.tipo-dragon {
+  background: linear-gradient(45deg, #A9A9A9 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.3091334895, 75.2224824356, 175.6908665105);
+}
+
+.tipo-roca.tipo-lucha {
+  background: linear-gradient(45deg, #A9A9A9 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 44.3091334895, 61.8266978923);
+}
+
+.tipo-roca.tipo-tierra {
+  background: linear-gradient(45deg, #A9A9A9 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 96.8618266979, 44.3091334895);
+}
+
+.tipo-roca.tipo-psiquico {
+  background: linear-gradient(45deg, #A9A9A9 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(177.1028456463, 82.1736249419, 145.6375421544, 0.8705882353);
+}
+
+.tipo-roca.tipo-bicho {
+  background: linear-gradient(45deg, #A9A9A9 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(114.3793911007, 175.6908665105, 44.3091334895);
+}
+
+.tipo-roca.tipo-siniestro {
+  background: linear-gradient(45deg, #A9A9A9 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(46.25, 46.25, 46.25);
+}
+
+.tipo-normal.tipo-agua {
+  background: linear-gradient(45deg, #b3b3b3 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(49.3899204244, 123.474801061, 195.6100795756);
+}
+
+.tipo-normal.tipo-electrico {
+  background: linear-gradient(45deg, #b3b3b3 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 164.4471744472, 42.9484029484);
+}
+
+.tipo-normal.tipo-fantasma {
+  background: linear-gradient(45deg, #b3b3b3 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(70.62, 59.07, 89.43);
+}
+
+.tipo-normal.tipo-fuego {
+  background: linear-gradient(45deg, #b3b3b3 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 81.941031941, 42.9484029484);
+}
+
+.tipo-normal.tipo-hielo {
+  background: linear-gradient(45deg, #b3b3b3 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(69.0943113772, 165.3278443114, 197.4056886228);
+}
+
+.tipo-normal.tipo-planta {
+  background: linear-gradient(45deg, #b3b3b3 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(71.2039312039, 158.7960687961, 71.2039312039);
+}
+
+.tipo-normal.tipo-veneno {
+  background: linear-gradient(45deg, #b3b3b3 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(134.4963144963, 42.9484029484, 187.0515970516);
+}
+
+.tipo-normal.tipo-volador {
+  background: linear-gradient(45deg, #b3b3b3 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(118.2245762712, 133.2627118644, 138.2754237288);
+}
+
+.tipo-normal.tipo-roca {
+  background: linear-gradient(45deg, #b3b3b3 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(135.75, 135.75, 135.75);
+}
+
+.tipo-normal.tipo-hada {
+  background: linear-gradient(45deg, #b3b3b3 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 42.9484029484, 167.8378378378);
+}
+
+.tipo-normal.tipo-acero {
+  background: linear-gradient(45deg, #b3b3b3 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.25, 90.25, 90.25);
+}
+
+.tipo-normal.tipo-dragon {
+  background: linear-gradient(45deg, #b3b3b3 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(42.9484029484, 76.855036855, 187.0515970516);
+}
+
+.tipo-normal.tipo-lucha {
+  background: linear-gradient(45deg, #b3b3b3 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 42.9484029484, 62.1621621622);
+}
+
+.tipo-normal.tipo-tierra {
+  background: linear-gradient(45deg, #b3b3b3 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 100.5896805897, 42.9484029484);
+}
+
+.tipo-normal.tipo-psiquico {
+  background: linear-gradient(45deg, #b3b3b3 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(184.5248485419, 87.3398573404, 152.3118458403, 0.8705882353);
+}
+
+.tipo-normal.tipo-bicho {
+  background: linear-gradient(45deg, #b3b3b3 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119.8034398034, 187.0515970516, 42.9484029484);
+}
+
+.tipo-normal.tipo-siniestro {
+  background: linear-gradient(45deg, #b3b3b3 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51.25, 51.25, 51.25);
+}
+
+.tipo-hada.tipo-agua {
+  background: linear-gradient(45deg, #ff00dd 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.15625, 19.8475, 213.6525);
+}
+
+.tipo-hada.tipo-electrico {
+  background: linear-gradient(45deg, #ff00dd 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(255, 31, 35.5559322034);
+}
+
+.tipo-hada.tipo-fantasma {
+  background: linear-gradient(45deg, #ff00dd 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(74.1214057508, 0, 80);
+}
+
+.tipo-hada.tipo-fuego {
+  background: linear-gradient(45deg, #ff00dd 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(213, 0, 73.4149659864);
+}
+
+.tipo-hada.tipo-hielo {
+  background: linear-gradient(45deg, #ff00dd 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.1061946903, 35.8495575221, 228.1504424779);
+}
+
+.tipo-hada.tipo-planta {
+  background: linear-gradient(45deg, #ff00dd 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(106.75, 71.75, 94.85);
+}
+
+.tipo-hada.tipo-veneno {
+  background: linear-gradient(45deg, #ff00dd 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(141.4821428571, 0, 161.5);
+}
+
+.tipo-hada.tipo-volador {
+  background: linear-gradient(45deg, #ff00dd 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(151.5592672414, 49.9407327586, 148.9536637931);
+}
+
+.tipo-hada.tipo-roca {
+  background: linear-gradient(45deg, #ff00dd 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 44.3091334895, 158.1733021077);
+}
+
+.tipo-hada.tipo-normal {
+  background: linear-gradient(45deg, #ff00dd 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 42.9484029484, 167.8378378378);
+}
+
+.tipo-hada.tipo-acero {
+  background: linear-gradient(45deg, #ff00dd 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 24.4817518248, 93.8467153285);
+}
+
+.tipo-hada.tipo-dragon {
+  background: linear-gradient(45deg, #ff00dd 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.6064049587, 13.4524793388, 178.0475206612);
+}
+
+.tipo-hada.tipo-lucha {
+  background: linear-gradient(45deg, #ff00dd 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 0, 89.25);
+}
+
+.tipo-hada.tipo-tierra {
+  background: linear-gradient(45deg, #ff00dd 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(229.5, 0, 66.9375);
+}
+
+.tipo-hada.tipo-psiquico {
+  background: linear-gradient(45deg, #ff00dd 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(207.0352941176, 0, 167.4824592847, 0.8705882353);
+}
+
+.tipo-hada.tipo-bicho {
+  background: linear-gradient(45deg, #ff00dd 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(162.5625, 86.0625, 66.9375);
+}
+
+.tipo-hada.tipo-siniestro {
+  background: linear-gradient(45deg, #ff00dd 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 0, 44.2);
+}
+
+.tipo-acero.tipo-agua {
+  background: linear-gradient(45deg, #4e4e4e 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(35.2653061224, 72.4897959184, 108.7346938776);
+}
+
+.tipo-acero.tipo-electrico {
+  background: linear-gradient(45deg, #4e4e4e 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 91.9635036496, 24.4817518248);
+}
+
+.tipo-acero.tipo-fantasma {
+  background: linear-gradient(45deg, #4e4e4e 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(21.6431451613, 14.939516129, 32.560483871);
+}
+
+.tipo-acero.tipo-fuego {
+  background: linear-gradient(45deg, #4e4e4e 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 46.1386861314, 24.4817518248);
+}
+
+.tipo-acero.tipo-hielo {
+  background: linear-gradient(45deg, #4e4e4e 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(52.6590909091, 97.7954545455, 112.8409090909);
+}
+
+.tipo-acero.tipo-planta {
+  background: linear-gradient(45deg, #4e4e4e 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(40.1751824818, 88.8248175182, 40.1751824818);
+}
+
+.tipo-acero.tipo-veneno {
+  background: linear-gradient(45deg, #4e4e4e 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(75.3284671533, 24.4817518248, 104.5182481752);
+}
+
+.tipo-acero.tipo-volador {
+  background: linear-gradient(45deg, #4e4e4e 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(73.0581896552, 80.0959051724, 82.4418103448);
+}
+
+.tipo-acero.tipo-roca {
+  background: linear-gradient(45deg, #4e4e4e 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(85.25, 85.25, 85.25);
+}
+
+.tipo-acero.tipo-normal {
+  background: linear-gradient(45deg, #4e4e4e 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.25, 90.25, 90.25);
+}
+
+.tipo-acero.tipo-hada {
+  background: linear-gradient(45deg, #4e4e4e 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 24.4817518248, 93.8467153285);
+}
+
+.tipo-acero.tipo-dragon {
+  background: linear-gradient(45deg, #4e4e4e 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(24.4817518248, 43.3138686131, 104.5182481752);
+}
+
+.tipo-acero.tipo-lucha {
+  background: linear-gradient(45deg, #4e4e4e 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 24.4817518248, 35.1532846715);
+}
+
+.tipo-acero.tipo-tierra {
+  background: linear-gradient(45deg, #4e4e4e 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 56.496350365, 24.4817518248);
+}
+
+.tipo-acero.tipo-psiquico {
+  background: linear-gradient(45deg, #4e4e4e 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(93.9386852922, 50.7848441195, 79.6348840047, 0.8705882353);
+}
+
+.tipo-acero.tipo-bicho {
+  background: linear-gradient(45deg, #4e4e4e 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(67.1678832117, 104.5182481752, 24.4817518248);
+}
+
+.tipo-acero.tipo-siniestro {
+  background: linear-gradient(45deg, #4e4e4e 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(0.75, 0.75, 0.75);
+}
+
+.tipo-dragon.tipo-agua {
+  background: linear-gradient(45deg, #003cff 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(0, 70.14375, 193.5);
+}
+
+.tipo-dragon.tipo-electrico {
+  background: linear-gradient(45deg, #003cff 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.4030612245, 98.0969387755, 90.4030612245);
+}
+
+.tipo-dragon.tipo-fantasma {
+  background: linear-gradient(45deg, #003cff 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(10.4908376963, 17.9842931937, 104.0091623037);
+}
+
+.tipo-dragon.tipo-fuego {
+  background: linear-gradient(45deg, #003cff 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(76.69921875, 38.80078125, 76.69921875);
+}
+
+.tipo-dragon.tipo-hielo {
+  background: linear-gradient(45deg, #003cff 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(1.47597254, 95.938215103, 213.52402746);
+}
+
+.tipo-dragon.tipo-planta {
+  background: linear-gradient(45deg, #003cff 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(14.2253521127, 75.3943661972, 86.7746478873);
+}
+
+.tipo-dragon.tipo-veneno {
+  background: linear-gradient(45deg, #003cff 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(47.26, 0, 208.5);
+}
+
+.tipo-dragon.tipo-volador {
+  background: linear-gradient(45deg, #003cff 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(39.0262582057, 75.3610503282, 165.9737417943);
+}
+
+.tipo-dragon.tipo-roca {
+  background: linear-gradient(45deg, #003cff 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.3091334895, 75.2224824356, 175.6908665105);
+}
+
+.tipo-dragon.tipo-normal {
+  background: linear-gradient(45deg, #003cff 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(42.9484029484, 76.855036855, 187.0515970516);
+}
+
+.tipo-dragon.tipo-hada {
+  background: linear-gradient(45deg, #003cff 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(90.6064049587, 13.4524793388, 178.0475206612);
+}
+
+.tipo-dragon.tipo-acero {
+  background: linear-gradient(45deg, #003cff 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(24.4817518248, 43.3138686131, 104.5182481752);
+}
+
+.tipo-dragon.tipo-lucha {
+  background: linear-gradient(45deg, #003cff 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(71.6045845272, 16.8481375358, 81.1518624642);
+}
+
+.tipo-dragon.tipo-tierra {
+  background: linear-gradient(45deg, #003cff 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(80.7194244604, 51.2805755396, 80.7194244604);
+}
+
+.tipo-dragon.tipo-psiquico {
+  background: linear-gradient(45deg, #003cff 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(53.0059863738, 23.1492481907, 199.7860459269, 0.8705882353);
+}
+
+.tipo-dragon.tipo-bicho {
+  background: linear-gradient(45deg, #003cff 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.9312638581, 104.0687361419, 84.2461197339);
+}
+
+.tipo-dragon.tipo-siniestro {
+  background: linear-gradient(45deg, #003cff 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #000c33;
+}
+
+.tipo-lucha.tipo-agua {
+  background: linear-gradient(45deg, #ff0022 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(92.1478060046, 46.558891455, 93.441108545);
+}
+
+.tipo-lucha.tipo-electrico {
+  background: linear-gradient(45deg, #ff0022 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 74.3392857143, 0);
+}
+
+.tipo-lucha.tipo-fantasma {
+  background: linear-gradient(45deg, #ff0022 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(68.5, 0, 29.7620689655);
+}
+
+.tipo-lucha.tipo-fuego {
+  background: linear-gradient(45deg, #ff0022 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 14.375, 0);
+}
+
+.tipo-lucha.tipo-hielo {
+  background: linear-gradient(45deg, #ff0022 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(121.1767151767, 71.8232848233, 103.1205821206);
+}
+
+.tipo-lucha.tipo-planta {
+  background: linear-gradient(45deg, #ff0022 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(92.5192802057, 62.1850899743, 25.4807197943);
+}
+
+.tipo-lucha.tipo-veneno {
+  background: linear-gradient(45deg, #ff0022 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(132, 0, 91.4820143885);
+}
+
+.tipo-lucha.tipo-volador {
+  background: linear-gradient(45deg, #ff0022 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(151.5592672414, 49.9407327586, 67.7456896552);
+}
+
+.tipo-lucha.tipo-roca {
+  background: linear-gradient(45deg, #ff0022 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 44.3091334895, 61.8266978923);
+}
+
+.tipo-lucha.tipo-normal {
+  background: linear-gradient(45deg, #ff0022 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 42.9484029484, 62.1621621622);
+}
+
+.tipo-lucha.tipo-hada {
+  background: linear-gradient(45deg, #ff0022 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 0, 89.25);
+}
+
+.tipo-lucha.tipo-acero {
+  background: linear-gradient(45deg, #ff0022 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 24.4817518248, 35.1532846715);
+}
+
+.tipo-lucha.tipo-dragon {
+  background: linear-gradient(45deg, #ff0022 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(71.6045845272, 16.8481375358, 81.1518624642);
+}
+
+.tipo-lucha.tipo-tierra {
+  background: linear-gradient(45deg, #ff0022 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 27.9285714286, 0);
+}
+
+.tipo-lucha.tipo-psiquico {
+  background: linear-gradient(45deg, #ff0022 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(207.0352941176, 0, 59.8804644276, 0.8705882353);
+}
+
+.tipo-lucha.tipo-bicho {
+  background: linear-gradient(45deg, #ff0022 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.12, 81.6, 10.88);
+}
+
+.tipo-lucha.tipo-siniestro {
+  background: linear-gradient(45deg, #ff0022 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 0, 6.8);
+}
+
+.tipo-tierra.tipo-agua {
+  background: linear-gradient(45deg, #ff6600 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(102.036809816, 86.963190184, 90.4417177914);
+}
+
+.tipo-tierra.tipo-electrico {
+  background: linear-gradient(45deg, #ff6600 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 110.95, 0);
+}
+
+.tipo-tierra.tipo-fantasma {
+  background: linear-gradient(45deg, #ff6600 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(86.9240837696, 30.5732984293, 27.5759162304);
+}
+
+.tipo-tierra.tipo-fuego {
+  background: linear-gradient(45deg, #ff6600 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(178.5, 59.85, 0);
+}
+
+.tipo-tierra.tipo-hielo {
+  background: linear-gradient(45deg, #ff6600 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(126.9336384439, 116.6018306636, 88.0663615561);
+}
+
+.tipo-tierra.tipo-planta {
+  background: linear-gradient(45deg, #ff6600 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(87.1428571429, 87.7142857143, 14.2857142857);
+}
+
+.tipo-tierra.tipo-veneno {
+  background: linear-gradient(45deg, #ff6600 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(149.0299401198, 33.9700598802, 89.8562874251);
+}
+
+.tipo-tierra.tipo-volador {
+  background: linear-gradient(45deg, #ff6600 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(153.4135667396, 94.2013129103, 51.5864332604);
+}
+
+.tipo-tierra.tipo-roca {
+  background: linear-gradient(45deg, #ff6600 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(175.6908665105, 96.8618266979, 44.3091334895);
+}
+
+.tipo-tierra.tipo-normal {
+  background: linear-gradient(45deg, #ff6600 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(187.0515970516, 100.5896805897, 42.9484029484);
+}
+
+.tipo-tierra.tipo-hada {
+  background: linear-gradient(45deg, #ff6600 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(229.5, 0, 66.9375);
+}
+
+.tipo-tierra.tipo-acero {
+  background: linear-gradient(45deg, #ff6600 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(104.5182481752, 56.496350365, 24.4817518248);
+}
+
+.tipo-tierra.tipo-dragon {
+  background: linear-gradient(45deg, #ff6600 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(80.7194244604, 51.2805755396, 80.7194244604);
+}
+
+.tipo-tierra.tipo-lucha {
+  background: linear-gradient(45deg, #ff6600 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(195.5, 27.9285714286, 0);
+}
+
+.tipo-tierra.tipo-psiquico {
+  background: linear-gradient(45deg, #ff6600 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(251.1352941176, 27.6798045287, 0, 0.8705882353);
+}
+
+.tipo-tierra.tipo-bicho {
+  background: linear-gradient(45deg, #ff6600 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119, 108.652173913, 0);
+}
+
+.tipo-tierra.tipo-siniestro {
+  background: linear-gradient(45deg, #ff6600 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 20.4, 0);
+}
+
+.tipo-psiquico.tipo-agua {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(47.1137324749, 55.6105169918, 222.903914584, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-electrico {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(251.1352941176, 125.6243513701, 0, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-fantasma {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(60.4903258645, 14.8126487011, 67.7638218871, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-fuego {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(250.4647058824, 0, 0.9176300447, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-hielo {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(79.1554183038, 105.8722633273, 217.9269346374, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-planta {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(88.957852473, 112.5164849681, 72.6541032672, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-veneno {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(141.5228593285, 16.3037492058, 168.8668390295, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-volador {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(149.5053679952, 86.4828672989, 144.4379850353, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-roca {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(177.1028456463, 82.1736249419, 145.6375421544, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-normal {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(184.5248485419, 87.3398573404, 152.3118458403, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-hada {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(207.0352941176, 0, 167.4824592847, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-acero {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(93.9386852922, 50.7848441195, 79.6348840047, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-dragon {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(53.0059863738, 23.1492481907, 199.7860459269, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-lucha {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(207.0352941176, 0, 59.8804644276, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-tierra {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(251.1352941176, 27.6798045287, 0, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-bicho {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(129.3202684513, 135.9830058857, 49.1875823496, 0.8705882353);
+}
+
+.tipo-psiquico.tipo-siniestro {
+  background: linear-gradient(45deg, rgba(255, 77, 196, 0.7411764706) 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(35.7424698795, 10.7928242381, 27.4726435152, 0.8705882353);
+}
+
+.tipo-bicho.tipo-agua {
+  background: linear-gradient(45deg, #88ff00 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(50.2549450549, 155.7450549451, 90.5494505495);
+}
+
+.tipo-bicho.tipo-electrico {
+  background: linear-gradient(45deg, #88ff00 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(131.8585106383, 158.5, 0);
+}
+
+.tipo-bicho.tipo-fantasma {
+  background: linear-gradient(45deg, #88ff00 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(47.8011527378, 71.2824207493, 25.7175792507);
+}
+
+.tipo-bicho.tipo-fuego {
+  background: linear-gradient(45deg, #88ff00 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119, 98.6086956522, 0);
+}
+
+.tipo-bicho.tipo-hielo {
+  background: linear-gradient(45deg, #88ff00 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(39.9217391304, 221.0782608696, 68.7913043478);
+}
+
+.tipo-bicho.tipo-planta {
+  background: linear-gradient(45deg, #88ff00 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(65.1, 161, 17.5);
+}
+
+.tipo-bicho.tipo-veneno {
+  background: linear-gradient(45deg, #88ff00 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(109.2077087794, 90.7922912206, 90.7922912206);
+}
+
+.tipo-bicho.tipo-volador {
+  background: linear-gradient(45deg, #88ff00 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(99.8417431193, 169.0389908257, 46.4610091743);
+}
+
+.tipo-bicho.tipo-roca {
+  background: linear-gradient(45deg, #88ff00 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(114.3793911007, 175.6908665105, 44.3091334895);
+}
+
+.tipo-bicho.tipo-normal {
+  background: linear-gradient(45deg, #88ff00 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119.8034398034, 187.0515970516, 42.9484029484);
+}
+
+.tipo-bicho.tipo-hada {
+  background: linear-gradient(45deg, #88ff00 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(162.5625, 86.0625, 66.9375);
+}
+
+.tipo-bicho.tipo-acero {
+  background: linear-gradient(45deg, #88ff00 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(67.1678832117, 104.5182481752, 24.4817518248);
+}
+
+.tipo-bicho.tipo-dragon {
+  background: linear-gradient(45deg, #88ff00 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(44.9312638581, 104.0687361419, 84.2461197339);
+}
+
+.tipo-bicho.tipo-lucha {
+  background: linear-gradient(45deg, #88ff00 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(125.12, 81.6, 10.88);
+}
+
+.tipo-bicho.tipo-tierra {
+  background: linear-gradient(45deg, #88ff00 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(119, 108.652173913, 0);
+}
+
+.tipo-bicho.tipo-psiquico {
+  background: linear-gradient(45deg, #88ff00 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(129.3202684513, 135.9830058857, 49.1875823496, 0.8705882353);
+}
+
+.tipo-bicho.tipo-siniestro {
+  background: linear-gradient(45deg, #88ff00 50%, #000000 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(27.2, 51, 0);
+}
+
+.tipo-siniestro.tipo-agua {
+  background: linear-gradient(45deg, #000000 50%, #1E90FF 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(6.9473684211, 33.3473684211, 59.0526315789);
+}
+
+.tipo-siniestro.tipo-electrico {
+  background: linear-gradient(45deg, #000000 50%, #FFD700 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #332b00;
+}
+
+.tipo-siniestro.tipo-fantasma {
+  background: linear-gradient(45deg, #000000 50%, #23005c 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.tipo-siniestro.tipo-fuego {
+  background: linear-gradient(45deg, #000000 50%, #FF4500 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 13.8, 0);
+}
+
+.tipo-siniestro.tipo-hielo {
+  background: linear-gradient(45deg, #000000 50%, #4cd0fc 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(20.2743902439, 55.487804878, 67.2256097561);
+}
+
+.tipo-siniestro.tipo-planta {
+  background: linear-gradient(45deg, #000000 50%, #32CD32 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #0a290a;
+}
+
+.tipo-siniestro.tipo-veneno {
+  background: linear-gradient(45deg, #000000 50%, #a200ff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(32.4, 0, 51);
+}
+
+.tipo-siniestro.tipo-volador {
+  background: linear-gradient(45deg, #000000 50%, #8ca1a8 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(35.2272727273, 40.5113636364, 42.2727272727);
+}
+
+.tipo-siniestro.tipo-roca {
+  background: linear-gradient(45deg, #000000 50%, #A9A9A9 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(46.25, 46.25, 46.25);
+}
+
+.tipo-siniestro.tipo-normal {
+  background: linear-gradient(45deg, #000000 50%, #b3b3b3 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51.25, 51.25, 51.25);
+}
+
+.tipo-siniestro.tipo-hada {
+  background: linear-gradient(45deg, #000000 50%, #ff00dd 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 0, 44.2);
+}
+
+.tipo-siniestro.tipo-acero {
+  background: linear-gradient(45deg, #000000 50%, #4e4e4e 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(0.75, 0.75, 0.75);
+}
+
+.tipo-siniestro.tipo-dragon {
+  background: linear-gradient(45deg, #000000 50%, #003cff 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid #000c33;
+}
+
+.tipo-siniestro.tipo-lucha {
+  background: linear-gradient(45deg, #000000 50%, #ff0022 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 0, 6.8);
+}
+
+.tipo-siniestro.tipo-tierra {
+  background: linear-gradient(45deg, #000000 50%, #ff6600 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(51, 20.4, 0);
+}
+
+.tipo-siniestro.tipo-psiquico {
+  background: linear-gradient(45deg, #000000 50%, rgba(255, 77, 196, 0.7411764706) 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgba(35.7424698795, 10.7928242381, 27.4726435152, 0.8705882353);
+}
+
+.tipo-siniestro.tipo-bicho {
+  background: linear-gradient(45deg, #000000 50%, #88ff00 50%);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid rgb(27.2, 51, 0);
 }
 
 /* ======= PORTFOLIO ======= */
@@ -367,6 +3454,87 @@ aside {
     transform: translateY(0);
   }
 }
+.section-padding {
+  padding: 48px 0;
+}
+
+.contacto-title {
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.contacto-text {
+  max-width: 56ch;
+  opacity: 0.95;
+}
+
+.form-control,
+.form-select,
+.form-control:focus {
+  background-color: #fff;
+  color: #111;
+}
+
+.btn.btn-pokeball {
+  /* colores base */
+  --bs-btn-bg: #ff0000;
+  --bs-btn-border-color: #ff0000;
+  --bs-btn-color: #fff;
+  /* hover/focus/active */
+  --bs-btn-hover-bg: #cc0000;
+  --bs-btn-hover-border-color: #cc0000;
+  --bs-btn-focus-shadow-rgb: 255, 0, 0;
+  --bs-btn-active-bg: #b80000;
+  --bs-btn-active-border-color: #b80000;
+}
+
+.pokedex-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  /* Degradado rojo → blanco → negro */
+  background: linear-gradient(to bottom, #ff0000 0%, #ff0000 45%, #000000 46%, #000000 60%, #ffffff 60%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* Trazo negro alrededor */
+  -webkit-text-stroke: 2px #000000;
+  margin-bottom: 0.5rem;
+}
+
+.pokedex-intro {
+  text-align: center;
+  max-width: 72ch;
+  margin: 0 auto 1.5rem auto;
+  color: #333;
+}
+
+.pokedex-box {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+
+.pokedex-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+main.container .pokedex-title,
+main.container .pokedex-intro {
+  display: block;
+  width: 100%;
+}
+
+main.container {
+  margin-bottom: 4rem; /* probá 4, 5 o 6rem según se vea */
+}
+
 @media (max-width: 768px) {
   nav ul {
     list-style: none;
@@ -388,6 +3556,20 @@ aside {
     display: block;
     margin: 0 auto;
   }
+  .pokedex-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 32px 0;
+  }
+  .contacto-title {
+    font-size: 1.8rem;
+  }
+  .pokedex-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 480px) {
   body {
@@ -398,6 +3580,14 @@ aside {
   }
   .proyectos-container .proyecto img {
     border-radius: 5px;
+  }
+  .pokedex-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 992px) {
+  .pokedex-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
